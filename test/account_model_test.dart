@@ -15,18 +15,18 @@ void main() {
     );
   });
   group('Teste de Transferencia | ', () {
-    test('atualiza o saldo', () {
+    test('atualiza o saldo ao fazer uma transferencia', () {
       account.transfer(50.0);
       expect(account.balance, 30.0);
     });
 
-    test('lança InvalidAmountException', () {
+    test('lança InvalidAmountException se o valor transferido é negativo', () {
       expect(() => account.transfer(-50.0),
           throwsA(isA<InvalidAmountException>()));
       expect(() => account.transfer(0), throwsA(isA<InvalidAmountException>()));
     });
 
-    test('lança ValueNullException', () {
+    test('lança ValueNullException se o valor transferido é nulo', () {
       expect(() => account.transfer(null), throwsA(isA<ValueNullException>()));
     });
 
